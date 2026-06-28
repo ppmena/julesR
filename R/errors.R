@@ -1,27 +1,20 @@
-#' Handle HTTP errors
+#' Handle Jules API errors
 #'
-#' Centralized logic for mapping HTTP status codes to user-friendly messages.
-#'
-#' @param resp The httr2 response object.
+#' @param resp httr2 response
 #' @keywords internal
-stop_http_error <- function(resp) {
+handle_error <- function(resp) {
   status <- httr2::resp_status(resp)
+  status_desc <- httr2::resp_status_desc(resp)
 
-  msg <- switch(
-    as.character(status),
-    "400" = "Bad request. Please check your arguments.",
-    "401" = "Authentication failed. Verify your JULES_API_KEY.",
-    "403" = "Permission denied. You do not have access to this resource.",
-    "404" = "Resource not found.",
-    "409" = "Conflict. The resource might already exist.",
-    "429" = "Rate limit exceeded. Please slow down.",
-    "500" = "Internal server error at Jules API.",
-    "503" = "Service unavailable. Jules API is temporarily down.",
-    paste("HTTP error", status)
+  body <- tryCatch(httr2::resp_body_json(resp), error = function(e) NULL)
+
+  error_msg <- body$error$message %||% "Unknown error"
+
+  cli::cli_abort(
+    c(
+      "Jules API request failed [{status} {status_desc}]",
+      "x" = "{error_msg}"
+    ),
+    call = NULL
   )
-
-  cli::cli_abort(c(
-    "x" = "Jules API error: {msg}",
-    "i" = "Status code: {status}"
-  ), call = rlang::caller_env())
 }

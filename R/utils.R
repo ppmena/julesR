@@ -1,34 +1,26 @@
-#' Normalize resource names
+#' Warn about alpha API
 #'
-#' @param name The resource name or ID.
-#' @param prefix The prefix to ensure (e.g., "sessions/").
-#' @return The normalized resource name.
 #' @keywords internal
-as_resource_name <- function(name, prefix) {
-  check_string(name)
-  if (grepl(paste0("^", prefix), name)) {
-    name
-  } else {
-    paste0(prefix, name)
-  }
+warn_alpha <- function() {
+  cli::cli_warn(
+    "The Jules API is currently in {.strong alpha} (v1alpha) and is subject to change.",
+    .frequency = "once",
+    .frequency_id = "jules_alpha_warning"
+  )
 }
 
-#' @rdname as_resource_name
+#' Convert list to tibble row
+#'
+#' @param x A list
+#' @return A tibble with 1 row
 #' @keywords internal
-as_session_name <- function(name) {
-  as_resource_name(name, "sessions/")
-}
-
-#' @rdname as_resource_name
-#' @keywords internal
-as_source_name <- function(name) {
-  as_resource_name(name, "sources/")
-}
-
-#' @rdname as_resource_name
-#' @keywords internal
-as_activity_name <- function(name) {
-  as_resource_name(name, "activities/")
+as_tibble_row <- function(x) {
+  # Handle nested lists by keeping them as list-columns
+  x <- lapply(x, function(val) {
+    if (is.list(val)) list(val) else val
+  })
+  # Ensure all elements are length 1 (some might be lists of length 1 now)
+  tibble::as_tibble_row(x)
 }
 
 #' Validation helpers
@@ -39,13 +31,5 @@ as_activity_name <- function(name) {
 check_string <- function(x, arg_name = deparse(substitute(x))) {
   if (!is.character(x) || length(x) != 1 || is.na(x) || nchar(x) == 0) {
     cli::cli_abort("{.arg {arg_name}} must be a non-empty string.")
-  }
-}
-
-#' @rdname check_string
-#' @keywords internal
-check_not_null <- function(x, arg_name = deparse(substitute(x))) {
-  if (is.null(x)) {
-    cli::cli_abort("{.arg {arg_name}} cannot be NULL.")
   }
 }

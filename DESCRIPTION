@@ -1,16 +1,24 @@
 Package: julesr
-Title: R Client for Jules API
+Type: Package
+Title: R Client for the Jules API
 Version: 0.1.0
 Authors@R: person("Jules", "Engineer", role = c("aut", "cre"), email = "jules@example.com")
-Description: Core infrastructure for interacting with the Jules API.
+Description: An R client for the Jules REST API, providing tools to interact with sources, sessions, and activities. Note: This package interacts with an alpha API and is subject to change.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 8.0.0
 Imports:
-    httr2,
-    jsonlite,
     cli,
-    rlang
+    glue,
+    httr2,
+    rlang,
+    tibble
 Suggests:
-    testthat (>= 3.0.0)
+    jsonlite,
+    testthat (>= 3.0.0),
+    withr
+URL: https://github.com/google/julesr
+BugReports: https://github.com/google/julesr/issues
 Config/testthat/edition: 3

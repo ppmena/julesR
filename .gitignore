@@ -1,0 +1,17 @@
+.Rhistory
+.RData
+.Rproj.user
+.Ruserdata
+.Rproj.user/
+.Rbuildignore
+.DS_Store
+.quarto/
+renv/
+pkgdown/
+*.Rproj
+*.o
+*.so
+*.dll
+revdep/
+cran-comments.md
+inst/doc

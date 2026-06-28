@@ -1,0 +1,16 @@
+Package: julesr
+Title: R Client for Jules API
+Version: 0.1.0
+Authors@R: person("Jules", "Engineer", role = c("aut", "cre"), email = "jules@example.com")
+Description: Core infrastructure for interacting with the Jules API.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports:
+    httr2,
+    jsonlite,
+    cli,
+    rlang
+Suggests:
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3

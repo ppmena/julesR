@@ -2,25 +2,20 @@
 
 `julesr` is an R client for the [Jules API](https://jules.googleapis.com).
 
-## Status
-
-**Project Status: Alpha**
+## Project Status: Alpha
 
 The Jules API is currently in **alpha** (v1alpha) and is subject to change. This package should be considered experimental and may have breaking changes in the future.
 
 ## Installation
 
-You can install the development version of `julesr` from GitHub (once available) or by using `devtools`:
+You can install the development version of `julesr` from GitHub using `devtools`:
 
 ```r
-# Install devtools if you haven't already
 # install.packages("devtools")
-
-# Install julesr
-# devtools::install_github("google/julesr")
+devtools::install_github("google/julesr")
 ```
 
-## Configuration
+## Authentication
 
 To use `julesr`, you need a Jules API key. You can set it in two ways:
 
@@ -40,31 +35,32 @@ To use `julesr`, you need a Jules API key. You can set it in two ways:
 
 ```r
 library(julesr)
-sources <- list_sources()
-print(sources)
+if (nzchar(Sys.getenv("JULES_API_KEY"))) {
+  sources <- list_sources()
+  print(sources)
+}
 ```
 
-### Create a Session
+### Creating a Session
 
 ```r
-session <- create_session(list(
-  prompt = "Analyze the project structure",
-  sourceContext = list(source = "sources/my-repo")
-))
-print(session$name)
+if (nzchar(Sys.getenv("JULES_API_KEY"))) {
+  session <- create_session(list(
+    prompt = "Analyze the project structure",
+    sourceContext = list(source = "sources/my-repo")
+  ))
+  print(session$name)
+}
 ```
 
-### Send a Message
+### Sending a Message
 
 ```r
-response <- send_message(session$name, "What are the main entry points?")
+if (nzchar(Sys.getenv("JULES_API_KEY"))) {
+  response <- send_message("sessions/my-session-id", "What are the main entry points?")
+  print(response)
+}
 ```
-
-## Best Practices
-
-- Always keep your API key secure. Do not commit it to version control.
-- Use environment variables for API keys when possible.
-- Check the API documentation for rate limits and best practices for the Jules API.
 
 ## License
 
@@ -73,3 +69,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Contribution
 
 Contributions are welcome! Please feel free to submit a Pull Request or open an issue for any bugs or feature requests.
+
+If you want to contribute, please follow the [tidyverse style guide](https://style.tidyverse.org/) and ensure all tests pass before submitting a pull request.

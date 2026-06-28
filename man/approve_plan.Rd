@@ -15,3 +15,8 @@ Response from the API
 \description{
 Approve Plan
 }
+\examples{
+if (nzchar(Sys.getenv("JULES_API_KEY"))) {
+  approve_plan("sessions/my-session")
+}
+}

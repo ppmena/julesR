@@ -15,3 +15,11 @@ The created session
 \description{
 Create Session
 }
+\examples{
+if (nzchar(Sys.getenv("JULES_API_KEY"))) {
+  create_session(list(
+    prompt = "Analyze the project structure",
+    sourceContext = list(source = "sources/my-repo")
+  ))
+}
+}

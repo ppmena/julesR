@@ -12,3 +12,8 @@ A tibble of sources
 \description{
 List Sources
 }
+\examples{
+if (nzchar(Sys.getenv("JULES_API_KEY"))) {
+  list_sources()
+}
+}

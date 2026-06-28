@@ -13,10 +13,10 @@ Imports:
     cli,
     glue,
     httr2,
-    rlang,
     tibble
 Suggests:
     jsonlite,
+    rlang,
     testthat (>= 3.0.0),
     withr
 URL: https://github.com/google/julesr

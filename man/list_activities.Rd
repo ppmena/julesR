@@ -15,3 +15,8 @@ A tibble of activities
 \description{
 List Activities
 }
+\examples{
+if (nzchar(Sys.getenv("JULES_API_KEY"))) {
+  list_activities("sessions/my-session")
+}
+}

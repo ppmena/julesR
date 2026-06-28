@@ -2,6 +2,10 @@
 #'
 #' @param key Jules API key
 #' @export
+#' @examples
+#' \dontrun{
+#' jules_auth("your_api_key")
+#' }
 jules_auth <- function(key = Sys.getenv("JULES_API_KEY")) {
   if (is.null(key) || key == "") {
     cli::cli_abort(c(

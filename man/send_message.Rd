@@ -17,3 +17,8 @@ Response from the API
 \description{
 Send Message
 }
+\examples{
+if (nzchar(Sys.getenv("JULES_API_KEY"))) {
+  send_message("sessions/my-session", "What are the main entry points?")
+}
+}

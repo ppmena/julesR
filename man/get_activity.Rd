@@ -15,3 +15,8 @@ A list representing the activity
 \description{
 Get Activity
 }
+\examples{
+if (nzchar(Sys.getenv("JULES_API_KEY"))) {
+  get_activity("sessions/my-session/activities/my-activity")
+}
+}

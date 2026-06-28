@@ -1,0 +1,4 @@
+^\.gitignore$
+^julesr\.Rproj$
+^\.Rproj\.user$
+^install_r_pkgs\.log$

@@ -7,10 +7,10 @@
 jules_perform(req)
 }
 \arguments{
-\item{req}{httr2 request}
+\item{req}{httr2 request.}
 }
 \value{
-Parsed JSON response
+Parsed JSON response.
 }
 \description{
 Perform Jules API request

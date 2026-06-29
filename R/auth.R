@@ -1,37 +1,54 @@
-#' Set Jules API Key
+#' Authenticate with Jules
 #'
-#' @param key Jules API key
+#' @param api_key Jules API key. If `NULL`, it looks for the `JULES_API_KEY`
+#'   environment variable.
+#' @return Invisibly returns the API key.
 #' @export
 #' @examples
 #' \dontrun{
 #' jules_auth("your_api_key")
 #' }
-jules_auth <- function(key = Sys.getenv("JULES_API_KEY")) {
-  if (is.null(key) || key == "") {
-    cli::cli_abort(c(
-      "No API key found.",
-      "i" = "Please set {.envvar JULES_API_KEY} or provide it directly to {.fn jules_auth}."
-    ))
+jules_auth <- function(api_key = NULL) {
+  if (is.null(api_key)) {
+    api_key <- Sys.getenv("JULES_API_KEY")
   }
-  options(julesr.api_key = key)
-  invisible(key)
+
+  if (identical(api_key, "")) {
+    cli::cli_abort(
+      c(
+        "No API key found.",
+        "i" = "Please set the {.envvar JULES_API_KEY} environment variable or provide it directly to {.fn jules_auth}."
+      )
+    )
+  }
+
+  options(julesr.api_key = api_key)
+  invisible(api_key)
 }
 
-#' Get Jules API Key
+#' Get the current Jules API key
 #'
-#' @return The API key
-#' @keywords internal
-get_api_key <- function() {
-  key <- getOption("julesr.api_key") %||% Sys.getenv("JULES_API_KEY")
-  if (is.null(key) || key == "") {
-    cli::cli_abort(c(
-      "Jules API key not found.",
-      "i" = "Use {.fn jules_auth} or set {.envvar JULES_API_KEY}."
-    ))
-  }
-  key
-}
+#' @return The current API key.
+#' @export
+#' @examples
+#' if (nzchar(Sys.getenv("JULES_API_KEY"))) {
+#'   jules_api_key()
+#' }
+jules_api_key <- function() {
+  key <- getOption("julesr.api_key")
 
-`%||%` <- function(x, y) {
-  if (is.null(x)) y else x
+  if (is.null(key)) {
+    key <- Sys.getenv("JULES_API_KEY")
+  }
+
+  if (identical(key, "")) {
+    cli::cli_abort(
+      c(
+        "Jules API key not found.",
+        "i" = "Use {.fn jules_auth} or set the {.envvar JULES_API_KEY} environment variable."
+      )
+    )
+  }
+
+  key
 }

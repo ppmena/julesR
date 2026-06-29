@@ -7,10 +7,10 @@
 jules_request(path)
 }
 \arguments{
-\item{path}{API path}
+\item{path}{API path.}
 }
 \value{
-A httr2 request object
+A httr2 request object.
 }
 \description{
 Base request for Jules API

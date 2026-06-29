@@ -7,10 +7,10 @@
 as_tibble_row(x)
 }
 \arguments{
-\item{x}{A list}
+\item{x}{A list.}
 }
 \value{
-A tibble with 1 row
+A tibble with 1 row.
 }
 \description{
 Convert list to tibble row

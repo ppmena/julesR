@@ -1,7 +1,7 @@
 #' Base request for Jules API
 #'
-#' @param path API path
-#' @return A httr2 request object
+#' @param path API path.
+#' @return A httr2 request object.
 #' @keywords internal
 jules_request <- function(path) {
   base_url <- "https://jules.googleapis.com/v1alpha"
@@ -16,7 +16,7 @@ jules_request <- function(path) {
   httr2::request(base_url) |>
     httr2::req_url_path_append(path) |>
     httr2::req_headers(
-      `X-Goog-Api-Key` = get_api_key(),
+      `X-Goog-Api-Key` = jules_api_key(),
       `User-Agent` = ua
     ) |>
     httr2::req_error(is_error = function(resp) FALSE)
@@ -24,8 +24,8 @@ jules_request <- function(path) {
 
 #' Perform Jules API request
 #'
-#' @param req httr2 request
-#' @return Parsed JSON response
+#' @param req httr2 request.
+#' @return Parsed JSON response.
 #' @keywords internal
 jules_perform <- function(req) {
   resp <- httr2::req_perform(req)
@@ -43,18 +43,23 @@ jules_perform <- function(req) {
 
 #' Perform paginated Jules API request
 #'
-#' @param path API path
-#' @param key Key for the list in the response (e.g., "sources")
-#' @param query Optional query parameters
-#' @return A list of all items
+#' @param path API path.
+#' @param key Key for the list in the response (e.g., "sources").
+#' @param query Optional query parameters.
+#' @return A list of all items.
 #' @keywords internal
-jules_perform_all <- function(path, key, query = list()) {
+jules_perform_all <- function(path,
+                              key,
+                              query = list()) {
   all_items <- list()
   next_page_token <- NULL
 
   repeat {
     req <- jules_request(path) |>
-      httr2::req_url_query(!!!query, pageToken = next_page_token)
+      httr2::req_url_query(
+        !!!query,
+        pageToken = next_page_token
+      )
 
     resp_json <- jules_perform(req)
 
@@ -64,7 +69,7 @@ jules_perform_all <- function(path, key, query = list()) {
     }
 
     next_page_token <- resp_json$nextPageToken
-    if (is.null(next_page_token) || next_page_token == "") {
+    if (is.null(next_page_token) || identical(next_page_token, "")) {
       break
     }
   }

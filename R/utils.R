@@ -11,13 +11,17 @@ warn_alpha <- function() {
 
 #' Convert list to tibble row
 #'
-#' @param x A list
-#' @return A tibble with 1 row
+#' @param x A list.
+#' @return A tibble with 1 row.
 #' @keywords internal
 as_tibble_row <- function(x) {
   # Handle nested lists by keeping them as list-columns
   x <- lapply(x, function(val) {
-    if (is.list(val)) list(val) else val
+    if (is.list(val)) {
+      list(val)
+    } else {
+      val
+    }
   })
   # Ensure all elements are length 1 (some might be lists of length 1 now)
   tibble::as_tibble_row(x)
@@ -25,8 +29,8 @@ as_tibble_row <- function(x) {
 
 #' Convert list of items to tibble
 #'
-#' @param items List of lists
-#' @return A tibble
+#' @param items List of lists.
+#' @return A tibble.
 #' @keywords internal
 items_to_tibble <- function(items) {
   if (length(items) == 0) {

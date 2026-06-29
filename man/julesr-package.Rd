@@ -11,8 +11,8 @@ An R client for the Jules REST API, providing tools to interact with sources, se
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/google/julesr}
-  \item Report bugs at \url{https://github.com/google/julesr/issues}
+  \item \url{https://github.com/ppmena/julesR}
+  \item Report bugs at \url{https://github.com/ppmena/julesR/issues}
 }
 
 }

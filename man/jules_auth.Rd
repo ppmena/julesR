@@ -2,15 +2,19 @@
 % Please edit documentation in R/auth.R
 \name{jules_auth}
 \alias{jules_auth}
-\title{Set Jules API Key}
+\title{Authenticate with Jules}
 \usage{
-jules_auth(key = Sys.getenv("JULES_API_KEY"))
+jules_auth(api_key = NULL)
 }
 \arguments{
-\item{key}{Jules API key}
+\item{api_key}{Jules API key. If \code{NULL}, it looks for the \code{JULES_API_KEY}
+environment variable.}
+}
+\value{
+Invisibly returns the API key.
 }
 \description{
-Set Jules API Key
+Authenticate with Jules
 }
 \examples{
 \dontrun{

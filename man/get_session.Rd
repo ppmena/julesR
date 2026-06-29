@@ -15,3 +15,8 @@ A list representing the session
 \description{
 Get Session
 }
+\examples{
+if (nzchar(Sys.getenv("JULES_API_KEY"))) {
+  get_session("sessions/my-session")
+}
+}

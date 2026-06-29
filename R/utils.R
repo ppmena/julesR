@@ -23,6 +23,19 @@ as_tibble_row <- function(x) {
   tibble::as_tibble_row(x)
 }
 
+#' Convert list of items to tibble
+#'
+#' @param items List of lists
+#' @return A tibble
+#' @keywords internal
+items_to_tibble <- function(items) {
+  if (length(items) == 0) {
+    return(tibble::tibble())
+  }
+  rows <- lapply(items, as_tibble_row)
+  do.call(rbind, rows)
+}
+
 #' Validation helpers
 #'
 #' @param x Value to check.

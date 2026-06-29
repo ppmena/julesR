@@ -12,3 +12,8 @@ A tibble of sessions
 \description{
 List Sessions
 }
+\examples{
+if (nzchar(Sys.getenv("JULES_API_KEY"))) {
+  list_sessions()
+}
+}

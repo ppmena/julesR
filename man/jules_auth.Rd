@@ -12,3 +12,8 @@ jules_auth(key = Sys.getenv("JULES_API_KEY"))
 \description{
 Set Jules API Key
 }
+\examples{
+\dontrun{
+jules_auth("your_api_key")
+}
+}

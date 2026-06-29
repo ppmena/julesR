@@ -15,3 +15,8 @@ A list representing the source
 \description{
 Get Source
 }
+\examples{
+if (nzchar(Sys.getenv("JULES_API_KEY"))) {
+  get_source("sources/my-repo")
+}
+}

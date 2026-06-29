@@ -7,10 +7,10 @@
 items_to_tibble(items)
 }
 \arguments{
-\item{items}{List of lists}
+\item{items}{List of lists.}
 }
 \value{
-A tibble
+A tibble.
 }
 \description{
 Convert list of items to tibble

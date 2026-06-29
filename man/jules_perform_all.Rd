@@ -7,14 +7,14 @@
 jules_perform_all(path, key, query = list())
 }
 \arguments{
-\item{path}{API path}
+\item{path}{API path.}
 
-\item{key}{Key for the list in the response (e.g., "sources")}
+\item{key}{Key for the list in the response (e.g., "sources").}
 
-\item{query}{Optional query parameters}
+\item{query}{Optional query parameters.}
 }
 \value{
-A list of all items
+A list of all items.
 }
 \description{
 Perform paginated Jules API request

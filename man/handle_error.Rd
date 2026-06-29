@@ -7,7 +7,7 @@
 handle_error(resp)
 }
 \arguments{
-\item{resp}{httr2 response}
+\item{resp}{httr2 response.}
 }
 \description{
 Handle Jules API errors

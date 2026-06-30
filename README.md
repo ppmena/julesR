@@ -43,9 +43,12 @@ print(repos)
 
 ### Creating a Session
 
+You can create a session using either the fully qualified source name or just the source ID:
+
 ```r
+# Using a source ID from jules_sources()
 task <- jules_session_create(
-    prompt = "Add tests.",
+    prompt = "Add unit tests for the utils module.",
     source = repos$name[[1]]
 )
 print(task$name)
@@ -54,6 +57,7 @@ print(task$name)
 ### Getting a Session
 
 ```r
+# You can use the full name "sessions/xxx" or just "xxx"
 jules_session_get(task$name)
 ```
 
@@ -62,7 +66,7 @@ jules_session_get(task$name)
 ```r
 jules_message_send(
     task$name,
-    "Continue."
+    "Please continue with the implementation."
 )
 ```
 

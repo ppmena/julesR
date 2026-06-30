@@ -25,5 +25,3 @@ Suggests:
 URL: https://github.com/ppmena/julesR
 BugReports: https://github.com/ppmena/julesR/issues
 Config/testthat/edition: 3
-Maintainer: Jules Engineer <jules@example.com>
-Author: Jules Engineer [aut, cre]

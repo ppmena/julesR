@@ -5,3 +5,4 @@
 * Support for creating sessions, approving plans, and sending messages.
 * Built-in authentication handling via API keys.
 * Automatic conversion of API responses to tibbles for easy data manipulation.
+* Fixed 400 Bad Request in `jules_session_create` by ensuring correct resource name prefixes.

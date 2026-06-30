@@ -50,3 +50,27 @@ check_string <- function(x, arg_name = deparse(substitute(x))) {
     cli::cli_abort("{.arg {arg_name}} must be a non-empty string.")
   }
 }
+
+#' Add session prefix
+#'
+#' @param name Session name.
+#' @return Name with "sessions/" prefix.
+#' @keywords internal
+ensure_session_prefix <- function(name) {
+  if (!grepl("^sessions/", name)) {
+    return(paste0("sessions/", name))
+  }
+  name
+}
+
+#' Add source prefix
+#'
+#' @param name Source name.
+#' @return Name with "sources/" prefix.
+#' @keywords internal
+ensure_source_prefix <- function(name) {
+  if (!grepl("^sources/", name)) {
+    return(paste0("sources/", name))
+  }
+  name
+}

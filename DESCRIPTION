@@ -3,7 +3,11 @@ Type: Package
 Title: R Client for the Jules API
 Version: 0.1.0
 Authors@R: person("Jules", "Engineer", email = "jules@example.com", role = c("aut", "cre"))
-Description: An R client for the Jules REST API, providing tools to interact with sources, sessions, and activities. Note: This package interacts with an alpha API and is subject to change.
+Description: An R client for the Jules REST API, providing tools to interact
+    with sources, sessions, and activities. This package facilitates
+    interaction with the Jules AI-powered development environment by
+    wrapping its RESTful endpoints into easy-to-use R functions. Note:
+    This package interacts with an alpha API and is subject to change.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -21,5 +25,3 @@ Suggests:
 URL: https://github.com/ppmena/julesR
 BugReports: https://github.com/ppmena/julesR/issues
 Config/testthat/edition: 3
-Maintainer: Jules Engineer <jules@example.com>
-Author: Jules Engineer [aut, cre]

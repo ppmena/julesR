@@ -6,7 +6,7 @@
 \alias{julesr-package}
 \title{julesr: R Client for the Jules API}
 \description{
-An R client for the Jules REST API, providing tools to interact with sources, sessions, and activities. Note: This package interacts with an alpha API and is subject to change.
+An R client for the Jules REST API, providing tools to interact with sources, sessions, and activities. This package facilitates interaction with the Jules AI-powered development environment by wrapping its RESTful endpoints into easy-to-use R functions. Note: This package interacts with an alpha API and is subject to change.
 }
 \seealso{
 Useful links:
